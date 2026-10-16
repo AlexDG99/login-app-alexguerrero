@@ -1,0 +1,23 @@
+
+name: Verificación del proyecto
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Verificar archivos requeridos
+        run: |
+          test -f index.html
+          test -f README.md
+          test -f styles.css
+          test -f script.js
